@@ -10,7 +10,7 @@ let needsRedraw = true; // Flag to indicate if the canvas needs to be redrawn
 
 function preload() {
   // Load the CSV file
-  lines = loadStrings('data/organizations.csv');
+  lines = loadStrings('data/investments_VC.csv');
 }
 
 function setup() {
@@ -31,107 +31,107 @@ function setup() {
 }
 
 function extractCategoryListSUPREME() {
-  let csvData = lines;
+    let csvData = lines;
+    csvData = lines.join('\n'); // Join the lines into a single string
 
+  let rows = csvData.trim().split('\n').slice(1);
+  let markets = {};
 
-let rows = csvData.trim().split('\n').slice(1);
-let markets = {};
+  rows.forEach(row => {
+    let columns = row.split(',');
+    let market = columns[4].trim();
+    //console.log(`Funding Total USD: ${columns[5]}, Funding Rounds: ${columns[13]}`);
+    let funding_total_usd = parseInt(columns[5].replace(/[^0-9]/g, '')) || 0;
+    let status = columns[6].replace(/[^0-9]/g, '');
+    let country_code = columns[7].replace(/[^0-9]/g, '');
+    let concatenatedString = funding_total_usd.toString() + status + country_code;
 
-rows.forEach(row => {
-  let columns = row.split(',');
-  let market = columns[4].trim();
-  //console.log(`Funding Total USD: ${columns[5]}, Funding Rounds: ${columns[13]}`);
-  let funding_total_usd = parseInt(columns[5].replace(/[^0-9]/g, '')) || 0;
-  let status = columns[6].replace(/[^0-9]/g, '');
-  let country_code = columns[7].replace(/[^0-9]/g, '');
-  let concatenatedString = funding_total_usd.toString() + status + country_code;
+    funding_total_usd = parseInt(concatenatedString) || 0;
+    if (funding_total_usd === 0) return; // Skip this iteration if funding_total_usd is zero
 
-  funding_total_usd = parseInt(concatenatedString) || 0;
-  if (funding_total_usd === 0) return; // Skip this iteration if funding_total_usd is zero
-
-  let valueBetween1And10 = null;
-  for (let i = 10; i <= 15; i++) {
-    let columnValue = parseInt(columns[i].replace(/,/g, '').replace(/[^0-9]/g, '')) || 0;
-    if (columnValue >= 1 && columnValue <= 10) {
-      valueBetween1And10 = columnValue;
-      break;
-    }
-  }
-  let funding_rounds =valueBetween1And10;
-  //console.log(`Funding Total USD: ${funding_total_usd}, Funding Rounds: ${funding_rounds}`);
-  
-  status = 'operating';
-  for (let i = 6; i <= 15; i++) {
-    console.log (""+ columns[i].trim());
-    if ( columns[i].trim() == 'acquired') {
-      
-      status = 'acquired';
-      break;
-    }
-  }
-  console.log(`    j jj j j j `);
-
-  if (!markets[market]) {
-    markets[market] = {
-      market_name: market,
-      market_count: 0,
-      status_count_acquired: 0,
-      funding_total_usd: 0,
-      funding_rounds: 0
-    };
-  }
-
-  markets[market].market_count += 1;
-  isNaN(funding_total_usd) ? console.log(`Invalid funding_total_usd for market: ${market}`) : markets[market].funding_total_usd += funding_total_usd;
-  isNaN(funding_rounds) ? console.log(`Invalid funding_rounds for market: ${market}`) : markets[market].funding_rounds += funding_rounds;
-  if (status === 'acquired') markets[market].status_count_acquired += 1;
-});
-
-let result = Object.values(markets);
-console.log(result);
-
-}
-
-function draw() {
-  if (needsRedraw) {
-    displayCategoryList();
-    needsRedraw = false; // Reset the flag after redrawing
-  }
-  
-  // If a category is hovered, display its count near the mouse pointer
-  if (hoveredCategory) {
-    displayHoveredCount(mouseX, mouseY);
-  }
-}
-
-function extractCategoryList() {
-  // Start from 1 to skip the header line
-  for (let i = 1; i < lines.length; i++) {
-    let columns = split(lines[i], ','); // Split the line by commas
-    categoryList.push(columns[3]);      // Push the category_list column (index 3) to the array
-  }
-}
-
-function countCategories() {
-  for (let i = 0; i < categoryList.length; i++) {
-    try {
-      let categories = split(categoryList[i], '|');  // Split the categories by '|'
-      for (let j = 0; j < categories.length; j++) {
-        let category = categories[j].trim();         // Trim any extra spaces
-        
-        if (!category) continue; // Skip if category is undefined or empty
-        
-        // Count occurrences of each category
-        if (categoryCount[category]) {
-          categoryCount[category]++; // Increment count if it already exists
-        } else {
-          categoryCount[category] = 1; // Initialize count if it's the first occurrence
-        }
+    let valueBetween1And10 = null;
+    for (let i = 10; i <= 15; i++) {
+      let columnValue = parseInt(columns[i].replace(/,/g, '').replace(/[^0-9]/g, '')) || 0;
+      if (columnValue >= 1 && columnValue <= 10) {
+        valueBetween1And10 = columnValue;
+        break;
       }
-    } catch (error) {
-      console.error(`Error processing categoryList at index ${i}:`, error); // Log the error and continue
+    }
+    let funding_rounds =valueBetween1And10;
+    //console.log(`Funding Total USD: ${funding_total_usd}, Funding Rounds: ${funding_rounds}`);
+    
+    status = 'operating';
+    for (let i = 6; i <= 15; i++) {
+      console.log (""+ columns[i].trim());
+      if ( columns[i].trim() == 'acquired') {
+        
+        status = 'acquired';
+        break;
+      }
+    }
+    console.log(`    j jj j j j `);
+
+    if (!markets[market]) {
+      markets[market] = {
+        market_name: market,
+        market_count: 0,
+        status_count_acquired: 0,
+        funding_total_usd: 0,
+        funding_rounds: 0
+      };
+    }
+
+    markets[market].market_count += 1;
+    isNaN(funding_total_usd) ? console.log(`Invalid funding_total_usd for market: ${market}`) : markets[market].funding_total_usd += funding_total_usd;
+    isNaN(funding_rounds) ? console.log(`Invalid funding_rounds for market: ${market}`) : markets[market].funding_rounds += funding_rounds;
+    if (status === 'acquired') markets[market].status_count_acquired += 1;
+  });
+
+  let result = Object.values(markets);
+  console.log(result);
+
+  }
+
+  function draw() {
+    if (needsRedraw) {
+      displayCategoryList();
+      needsRedraw = false; // Reset the flag after redrawing
+    }
+    
+    // If a category is hovered, display its count near the mouse pointer
+    if (hoveredCategory) {
+      displayHoveredCount(mouseX, mouseY);
     }
   }
+
+  function extractCategoryList() {
+    // Start from 1 to skip the header line
+    for (let i = 1; i < lines.length; i++) {
+      let columns = split(lines[i], ','); // Split the line by commas
+      categoryList.push(columns[3]);      // Push the category_list column (index 3) to the array
+    }
+  }
+
+  function countCategories() {
+    for (let i = 0; i < categoryList.length; i++) {
+      try {
+        let categories = split(categoryList[i], '|');  // Split the categories by '|'
+        for (let j = 0; j < categories.length; j++) {
+          let category = categories[j].trim();         // Trim any extra spaces
+          
+          if (!category) continue; // Skip if category is undefined or empty
+          
+          // Count occurrences of each category
+          if (categoryCount[category]) {
+            categoryCount[category]++; // Increment count if it already exists
+          } else {
+            categoryCount[category] = 1; // Initialize count if it's the first occurrence
+          }
+        }
+      } catch (error) {
+        console.error(`Error processing categoryList at index ${i}:`, error); // Log the error and continue
+      }
+    }
 }
 
 function displayCategoryList() {
