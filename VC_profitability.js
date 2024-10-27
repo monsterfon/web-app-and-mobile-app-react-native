@@ -10,22 +10,68 @@ let needsRedraw = true; // Flag to indicate if the canvas needs to be redrawn
 
 function preload() {
   // Load the CSV file
-  lines = loadStrings('data/organizations.csv');
+  lines = loadStrings('data/organizations.csv', parseCSV);
 }
 
 function setup() {
   // Create a canvas for display
-  createCanvas(1920,  1080);
+  createCanvas(1920, 1080);
   describe('Ali se vlagateljem splača vlagati v startupe?');
-  
-  // Extract category_list column from the CSV
-  extractCategoryList();
-  
-  // Count categories from the extracted list
-  countCategories();
-  
-  // Display both the category list and counts on the canvas
-  displayCategoryList();
+}
+
+function parseCSV() {
+  let csvData = lines.join('\n');
+  console.log(csvData);
+
+  Papa.parse(csvData, {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+      let rows = results.data;
+      let markets = {};
+
+      rows.forEach(row => {
+        if (!row.market || !row.funding_total_usd || !row.funding_rounds || !row.status) {
+          console.log(`Skipping invalid row: ${JSON.stringify(row)}`);
+          return;
+        }
+
+        let market = row.market.trim();
+        let funding_total_usd = parseInt(row.funding_total_usd.replace(/,/g, '')) || 0;
+        let funding_rounds = parseInt(row.funding_rounds) || 0;
+        console.log(`Funding Total USD: ${funding_total_usd}, Funding Rounds: ${funding_rounds}`);
+        let status = row.status.trim();
+
+        if (!markets[market]) {
+          markets[market] = {
+            market_name: market,
+            market_count: 0,
+            status_count_acquired: 0,
+            funding_total_usd: 0,
+            funding_rounds: 0
+          };
+        }
+
+        markets[market].market_count += 1;
+        isNaN(funding_total_usd) ? console.log(`Invalid funding_total_usd for market: ${market}`) : markets[market].funding_total_usd += funding_total_usd;
+        isNaN(funding_rounds) ? console.log(`Invalid funding_rounds for market: ${market}`) : markets[market].funding_rounds += funding_rounds;
+        if (status === 'acquired') markets[market].status_count_acquired += 1;
+      });
+
+      let result = Object.values(markets);
+      console.log(result);
+
+      // Extract category_list column from the CSV
+      extractCategoryList();
+
+      // Count categories from the extracted list
+      countCategories();
+
+      // Display both the category list and counts on the canvas
+      displayCategoryList();
+    }
+  });
 }
 
 function draw() {
@@ -44,16 +90,18 @@ function extractCategoryList() {
   // Start from 1 to skip the header line
   for (let i = 1; i < lines.length; i++) {
     let columns = split(lines[i], ','); // Split the line by commas
-    categoryList.push(columns[3]);      // Push the category_list column (index 3) to the array
+    if (columns[3]) {
+      categoryList.push(columns[3]); // Push the category_list column (index 3) to the array
+    }
   }
 }
 
 function countCategories() {
   for (let i = 0; i < categoryList.length; i++) {
     try {
-      let categories = split(categoryList[i], '|');  // Split the categories by '|'
+      let categories = split(categoryList[i], '|'); // Split the categories by '|'
       for (let j = 0; j < categories.length; j++) {
-        let category = categories[j].trim();         // Trim any extra spaces
+        let category = categories[j].trim(); // Trim any extra spaces
         
         if (!category) continue; // Skip if category is undefined or empty
         
@@ -71,6 +119,11 @@ function countCategories() {
 }
 
 function displayCategoryList() {
+  if (typeof background !== 'function') {
+    console.error('background function is not defined');
+    return;
+  }
+
   background(150); // Set background to white
   let y = height - 100; // Start drawing histogram above the bottom
   let barWidth = width / 10; // Width of each bar (increased for wider bars)
@@ -116,8 +169,6 @@ function displayHoveredCount(x, y) {
   textAlign(LEFT);
   text(`Hovered Category: ${hoveredCategory} | Count: ${hoveredCount}`, x + 10, y - 10);
 }
-
-
 
 function mouseMoved() {
   // Check which bar is hovered
