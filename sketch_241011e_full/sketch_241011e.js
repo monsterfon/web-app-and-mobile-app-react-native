@@ -22,7 +22,7 @@ function setup() {
     describe('Ali se vlagateljem splača vlagati v startupe?');
 
     // Create a slider for the number of columns
-    columnSlider = createSlider(1,100, 10); // Min: 1, Max: 20, Initial: 10
+    columnSlider = createSlider(1,120, 10); // Min: 1, Max: 20, Initial: 10
     columnSlider.position(10, 10); // Position the slider
 
     // Add an event listener to the slider
@@ -83,6 +83,27 @@ function extractCategoryListSUPREME() {
     });
 
     result = Object.values(markets).sort((a, b) => b.market_count - a.market_count);
+    // Calculate the average funding_total_usd, funding_rounds and status_count_acquired and save it on index 2
+    let totalMarkets = Object.keys(markets).length;
+    let avgFundingTotalUSD = 0;
+    let avgFundingRounds = 0;
+    let avgStatusCountAcquired = 0;
+
+    if (totalMarkets > 0) {
+        avgFundingTotalUSD = result.reduce((sum, market) => sum + market.funding_total_usd, 0) / totalMarkets;
+        avgFundingRounds = result.reduce((sum, market) => sum + market.funding_rounds, 0) / totalMarkets;
+        avgStatusCountAcquired = result.reduce((sum, market) => sum + market.status_count_acquired, 0) / totalMarkets;
+    }
+
+    
+
+    result[2] = {
+        market_name: 'THE AVERAGE OF ALL MARKETS',
+        market_count: totalMarkets,
+        funding_total_usd: avgFundingTotalUSD,
+        funding_rounds: avgFundingRounds,
+        status_count_acquired: avgStatusCountAcquired
+    };
 }
 
 function displayCategoryList() {
