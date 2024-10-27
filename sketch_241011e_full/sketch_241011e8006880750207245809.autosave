@@ -31,7 +31,30 @@ function setup() {
 }
 
 function extractCategoryListSUPREME() {
-  let csvData = lines;
+  let csvData = `
+permalink,name,homepage_url,category_list, market , funding_total_usd ,status,country_code,state_code,region,city,funding_rounds,founded_at,founded_month,founded_quarter,founded_year,first_funding_at,last_funding_at,seed,venture,equity_crowdfunding,undisclosed,convertible_note,debt_financing,angel,grant,private_equity,post_ipo_equity,post_ipo_debt,secondary_market,product_crowdfunding,round_A,round_B,round_C,round_D,round_E,round_F,round_G,round_H  
+/organization/waywire,#waywire,http://www.waywire.com,|Entertainment|Politics|Social Media|News|, News ," 17,50,000 ",acquired,USA,NY,New York City,New York,1,2012-06-01,2012-06,2012-Q2,2012,2012-06-30,2012-06-30,1750000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/tv-communications,&TV Communications,http://enjoyandtv.com,|Games|, Games ," 40,00,000 ",operating,USA,CA,Los Angeles,Los Angeles,2,,,,,2010-06-04,2010-09-23,0,4000000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/rock-your-paper,'Rock' Your Paper,http://www.rockyourpaper.org,|Publishing|Education|, Publishing ," 40,000 ",operating,EST,,Tallinn,Tallinn,1,2012-10-26,2012-10,2012-Q4,2012,2012-08-09,2012-08-09,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/in-touch-network,(In)Touch Network,http://www.InTouchNetwork.com,|Electronics|Guides|Coffee|Restaurants|Music|iPhone|Apps|Mobile|iOS|E-Commerce|, Electronics ," 15,00,000 ",operating,GBR,,London,London,1,2011-04-01,2011-04,2011-Q2,2011,2011-04-01,2011-04-01,1500000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/r-ranch-and-mine,-R- Ranch and Mine,,|Tourism|Entertainment|Games|, Tourism ," 60,000 ",operating,USA,TX,Dallas,Fort Worth,2,2014-01-01,2014-01,2014-Q1,2014,2014-08-17,2014-09-26,0,0,60000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/club-domains,.Club Domains,http://nic.club/,|Software|, Software ," 70,00,000 ",,USA,FL,Ft. Lauderdale,Oakland Park,1,2011-10-10,2011-10,2011-Q4,2011,2013-05-31,2013-05-31,0,7000000,0,0,0,0,0,0,0,0,0,0,0,0,7000000,0,0,0,0,0,0  
+/organization/fox-networks,.Fox Networks,http://www.dotfox.com,|Advertising|, Advertising ," 49,12,393 ",closed,ARG,,Buenos Aires,Buenos Aires,1,,,,,2007-01-16,2007-01-16,0,0,0,4912393,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/0-6-com,0-6.com,http://www.0-6.com,|Curated Web|, Curated Web ," 20,00,000 ",operating,,,,,1,2007-01-01,2007-01,2007-Q1,2007,2008-03-19,2008-03-19,0,2000000,0,0,0,0,0,0,0,0,0,0,0,2000000,0,0,0,0,0,0,0  
+/organization/004-technologies,004 Technologies,http://004gmbh.de/en/004-interact,|Software|, Software , -   ,operating,USA,IL,"Springfield, Illinois",Champaign,1,2010-01-01,2010-01,2010-Q1,2010,2014-07-24,2014-07-24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/01games-technology,01Games Technology,http://www.01games.hk/,|Games|, Games ," 41,250 ",operating,HKG,,Hong Kong,Hong Kong,1,,,,,2014-07-01,2014-07-01,41250,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1-2-3-listo,"1,2,3 Listo",http://www.123listo.com,|E-Commerce|, E-Commerce ," 40,000 ",operating,CHL,,Santiago,Las Condes,1,2012-01-01,2012-01,2012-Q1,2012,2013-02-18,2013-02-18,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1-4-all,1-4 All,,|Entertainment|Games|Software|, Software , -   ,operating,USA,NC,NC - Other,Connellys Springs,1,,,,,2013-04-21,2013-04-21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1-800-dentist,1-800-DENTIST,http://www.1800dentist.com,|Health and Wellness|, Health and Wellness , -   ,operating,USA,CA,Los Angeles,Los Angeles,1,1986-01-01,1986-01,1986-Q1,1986,2010-08-19,2010-08-19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1-800-doctors,1-800-DOCTORS,http://1800doctors.com,|Health and Wellness|, Health and Wellness ," 17,50,000 ",operating,USA,NJ,Newark,Iselin,1,1984-01-01,1984-01,1984-Q1,1984,2011-03-02,2011-03-02,0,0,0,0,1750000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1-618-technology,1.618 Technology,,|Real Estate|, Real Estate , -   ,operating,USA,FL,Orlando,Orlando,1,2013-12-07,2013-12,2013-Q4,2013,2014-01-22,2014-01-22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/10-minutes-with,10 Minutes With,http://10minuteswith.com,|Education|, Education ," 44,00,000 ",operating,GBR,,London,London,2,2013-01-01,2013-01,2013-Q1,2013,2013-01-01,2014-10-09,400000,4000000,0,0,0,0,0,0,0,0,0,0,0,4000000,0,0,0,0,0,0,0  
+/organization/10-20-media,10-20 Media,http://www.10-20media.com,|E-Commerce|, E-Commerce ," 20,50,000 ",operating,USA,MD,Baltimore,Woodbine,4,2001-01-01,2001-01,2001-Q1,2001,2009-06-18,2011-12-28,0,0,0,0,0,2050000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1000-corks,1000 Corks,http://1000corks.com,|Search|, Search ," 40,000 ",operating,USA,OR,"Portland, Oregon",Lake Oswego,1,2008-01-01,2008-01,2008-Q1,2008,2011-08-23,2011-08-23,40000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1000-markets,1000 Markets,http://www.1000markets.com,|Marketplaces|Art|E-Commerce|, Marketplaces ," 5,00,000 ",acquired,,,,,1,2009-01-01,2009-01,2009-Q1,2009,2009-05-15,2009-05-15,500000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+/organization/1000jobboersen-de,1000jobboersen.de,http://www.1000jobboersen.de,|Curated Web|, Curated Web , -   ,operating,DEU,,Berlin,Berlin,1,,,,,2011-09-16,2011-09-16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0  
+
+`;
 
 
 let rows = csvData.trim().split('\n').slice(1);
@@ -40,15 +63,13 @@ let markets = {};
 rows.forEach(row => {
   let columns = row.split(',');
   let market = columns[4].trim();
-  //console.log(`Funding Total USD: ${columns[5]}, Funding Rounds: ${columns[13]}`);
+  console.log(`Funding Total USD: ${columns[5]}, Funding Rounds: ${columns[13]}`);
   let funding_total_usd = parseInt(columns[5].replace(/[^0-9]/g, '')) || 0;
   let status = columns[6].replace(/[^0-9]/g, '');
   let country_code = columns[7].replace(/[^0-9]/g, '');
   let concatenatedString = funding_total_usd.toString() + status + country_code;
 
   funding_total_usd = parseInt(concatenatedString) || 0;
-  if (funding_total_usd === 0) return; // Skip this iteration if funding_total_usd is zero
-
   let valueBetween1And10 = null;
   for (let i = 10; i <= 15; i++) {
     let columnValue = parseInt(columns[i].replace(/,/g, '').replace(/[^0-9]/g, '')) || 0;
@@ -58,18 +79,9 @@ rows.forEach(row => {
     }
   }
   let funding_rounds =valueBetween1And10;
-  //console.log(`Funding Total USD: ${funding_total_usd}, Funding Rounds: ${funding_rounds}`);
-  
-  status = 'operating';
-  for (let i = 6; i <= 15; i++) {
-    console.log (""+ columns[i].trim());
-    if ( columns[i].trim() == 'acquired') {
-      
-      status = 'acquired';
-      break;
-    }
-  }
+  console.log(`Funding Total USD: ${funding_total_usd}, Funding Rounds: ${funding_rounds}`);
   console.log(`    j jj j j j `);
+  // status = columns[6].trim();
 
   if (!markets[market]) {
     markets[market] = {

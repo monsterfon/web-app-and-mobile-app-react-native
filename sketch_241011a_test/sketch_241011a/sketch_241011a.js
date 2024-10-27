@@ -1,26 +1,29 @@
 let lines;
-let industryCounts = {};
+let categoryList = [];
+let categoryCount = {};
+let topCategories = [];
+let selectedCategory = '';
+let selectedCount = 0;
+let hoveredCategory = '';
+let hoveredCount = 0;
+let needsRedraw = true; // Flag to indicate if the canvas needs to be redrawn
 
 function preload() {
   // Load the CSV file
-  lines = loadStrings("data/organizations.csv", onLoadSuccess, onLoadError);
+  lines = loadStrings('data/organizations.csv');
 }
-
-function onLoadSuccess() {
-  parseCSV();
-}
-
-function onLoadError(err) {
-  console.error("Error loading CSV:", err);
-}
-
+  
 function setup() {
-  createCanvas(800, 600);
+  // Create a canvas for display
+  createCanvas(1920, 1080);
+  describe('Ali se vlagateljem splača vlagati v startupe?');
+  
+  parseCSV();
 }
 
 function parseCSV() {
   let csvData = lines.join('\n');
-  console.log(csvData);
+  //console.log(csvData);
 
   Papa.parse(csvData, {
     header: true,
@@ -31,11 +34,6 @@ function parseCSV() {
       let markets = {};
 
       rows.forEach(row => {
-        if (!row.market || !row.funding_total_usd || !row.funding_rounds || !row.status) {
-          console.log(`Skipping invalid row: ${JSON.stringify(row)}`);
-          return;
-        }
-
         let market = row.market.trim();
         let funding_total_usd = parseInt(row.funding_total_usd.replace(/,/g, '')) || 0;
         let funding_rounds = parseInt(row.funding_rounds) || 0;
@@ -60,13 +58,6 @@ function parseCSV() {
 
       let result = Object.values(markets);
       console.log(result);
-
-      extractCategoryList();
-      countCategories();
-      displayCategoryList();
-    },
-    error: function(err) {
-      console.error("Error during CSV parsing:", err);
     }
   });
 }
