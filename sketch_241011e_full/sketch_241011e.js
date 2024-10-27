@@ -22,7 +22,7 @@ function setup() {
     describe('Ali se vlagateljem splača vlagati v startupe?');
 
     // Create a slider for the number of columns
-    columnSlider = createSlider(1, 50, 10); // Min: 1, Max: 20, Initial: 10
+    columnSlider = createSlider(1,100, 10); // Min: 1, Max: 20, Initial: 10
     columnSlider.position(10, 10); // Position the slider
 
     // Add an event listener to the slider
@@ -109,7 +109,7 @@ function displayCategoryList() {
         // Optional: Add category names above the bars
         fill(0); // Set text color to black
         textAlign(CENTER);
-        text(market_name, i * barWidth + barWidth / 2, y + 15); // Display category names
+        text("", i * barWidth + barWidth / 2, y + 15); // Display category names
     }
 
     // If a category has been selected, display its count
@@ -128,10 +128,10 @@ function displayHoveredCount(x, y) {
     if (hoveredCategory) {
         const hoveredData = result.find(d => d.market_name === hoveredCategory);
         if (hoveredData) {
-            const { funding_total_usd, funding_rounds, status_count_acquired } = hoveredData;
-            text(`Funding Total USD: ${funding_total_usd}`, x + 10, y + 10);
-            text(`Funding Rounds: ${funding_rounds}`, x + 10, y + 30);
-            text(`Acquired Count: ${status_count_acquired}`, x + 10, y + 50);
+            const { funding_total_usd, funding_rounds, status_count_acquired, market_count } = hoveredData;
+            text(`Funding avg. USD: ${(Math.round(funding_total_usd / market_count / 1e6))}M`, x + 10, y + 10);
+            text(`Funding Rounds: ${(funding_rounds / market_count).toFixed(2)}`, x + 10, y + 30);
+            text(`Acquired Count %: ${((status_count_acquired / market_count) * 100).toFixed(2)}`, x + 10, y + 50);
         }
     }
 }
