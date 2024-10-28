@@ -9,27 +9,39 @@ let hoveredCount = 0;
 let needsRedraw = true; // Flag to indicate if the canvas needs to be redrawn
 let result = [];
 
+let leaderboard = []; // Array to store the leaderboard data
+
 function preload() {
     // Load the CSV file
     lines = loadStrings('data/investments_VC.csv');
 }
 
 let columnSlider;
+let myButton;
 
 function setup() {
     // Create a canvas for display
     createCanvas(1920, 1080);
-    describe('Ali se vlagateljem splača vlagati v startupe?');
-
+    
     // Create a slider for the number of columns
-    columnSlider = createSlider(1,120, 10); // Min: 1, Max: 20, Initial: 10
+    columnSlider = createSlider(1, 160, 10); // Min: 1, Max: 20, Initial: 10
     columnSlider.position(10, 10); // Position the slider
 
     // Add an event listener to the slider
     columnSlider.input(() => needsRedraw = true);
 
+    // Create a button
+    myButton = createButton('Reset  Leaderboard');
+    myButton.position(10, 50); // Position the button below the slider
+    myButton.mousePressed(buttonClicked); // Attach event listener
+
     extractCategoryListSUPREME();
     displayCategoryList();
+}
+
+function buttonClicked() {
+    console.log('Button was clicked!');
+    leaderboard = [];
 }
 
 function extractCategoryListSUPREME() {
@@ -95,8 +107,6 @@ function extractCategoryListSUPREME() {
         avgStatusCountAcquired = result.reduce((sum, market) => sum + market.status_count_acquired, 0) / totalMarkets;
     }
 
-    
-
     result[2] = {
         market_name: 'THE AVERAGE OF ALL MARKETS',
         market_count: totalMarkets,
@@ -107,7 +117,7 @@ function extractCategoryListSUPREME() {
 }
 
 function displayCategoryList() {
-    background(150); // Set background to white
+    background(200); // Set background to white
     let y = height - 100; // Start drawing histogram above the bottom
     let numColumns = columnSlider.value(); // Get the number of columns from the slider
     let barWidth = width / numColumns; // Width of each bar
@@ -124,7 +134,7 @@ function displayCategoryList() {
         let barHeight = map(market_count, 0, max(result.map(d => d.market_count)), 0, height / 2); // Decreased height scaling factor
 
         // Draw the bar
-        fill(100, 150, 200); // Bar color
+        fill(128, 128, 128); // Grey color
         rect(i * barWidth, y - barHeight, barWidth - 2, barHeight); // Draw the bar
 
         // Optional: Add category names above the bars
@@ -151,8 +161,8 @@ function displayHoveredCount(x, y) {
         if (hoveredData) {
             const { funding_total_usd, funding_rounds, status_count_acquired, market_count } = hoveredData;
             text(`Funding avg. USD: ${(Math.round(funding_total_usd / market_count / 1e6))}M`, x + 10, y + 10);
-            text(`Funding Rounds: ${(funding_rounds / market_count).toFixed(2)}`, x + 10, y + 30);
-            text(`Acquired Count %: ${((status_count_acquired / market_count) * 100).toFixed(2)}`, x + 10, y + 50);
+            text(`Funding Rounds: ${(funding_rounds / market_count).toFixed(1)}`, x + 10, y + 30);
+            text(`Acquired Count %: ${((status_count_acquired / market_count) * 100).toFixed(1)}`, x + 10, y + 50);
         }
     }
 }
@@ -205,9 +215,20 @@ function mouseMoved() {
     needsRedraw = true;
 }
 
-function displaySelectedCount() {
-    fill(0); // Set text color to black
-    textSize(16);
-    textAlign(CENTER);
-    text(`Selected Category: ${selectedCategory} | Count: ${selectedCount}`, width / 2, height - 20);
+function mousePressed() {
+    if (hoveredCategory) {
+        const hoveredData = result.find(d => d.market_name === hoveredCategory);
+        if (hoveredData) {
+            const { funding_total_usd, funding_rounds, status_count_acquired, market_count } = hoveredData;
+            const formattedData = {
+                market_name: hoveredCategory,
+                funding_avg_usd: `${(Math.round(funding_total_usd / market_count / 1e3))}  thousand USD`,
+                funding_rounds: (funding_rounds / market_count).toFixed(2),
+                acquired_count_percent: ((status_count_acquired / market_count) * 100).toFixed(2)
+            };
+            leaderboard.push(formattedData);
+            needsRedraw = true; // Redraw to update the leaderboard
+            console.log(leaderboard);
+        }
+    }
 }
