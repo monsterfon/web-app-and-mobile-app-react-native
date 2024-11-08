@@ -1,83 +1,85 @@
 README.txt
 
-Predstavitev Ideje
-Ta projekt analizira naložbe tveganega kapitala v različnih industrijah z namenom ugotoviti:
+## Pregled Projekta
 
-V katerih industrijah se splača vlagati tvegan kapital?
-Katere industrije so najbolj priljubljene med vlagatelji tveganega kapitala?
-Ali so te industrije priljubljene zaradi dobrih donosov ali zaradi drugih zanimivih dejavnikov?
-Kako močno je kapitalizirana računalniška industrija v primerjavi z drugimi?
+Ta projekt raziskuje vzorce in donosnost naložb tveganega kapitala (VC) v različnih industrijah. Cilj je analizirati, katere industrije so najbolj privlačne za VC naložbe in razumeti, kateri dejavniki prispevajo k njihovi priljubljenosti.
 
-Predstavitev Vizualizacije
-Vizualizacija prikazuje podatke o povprečnih zneskih financiranja, povprečnem številu krogov financiranja in odstotkih pridobitev za različne industrije. Z analizo teh meritev pridobimo vpogled v privlačnost in donosnost vsake industrije z vidika tveganega kapitala.
+### Ključna Vprašanja
+1. Kateri sektorji ponujajo najboljši donos na naložbe tveganega kapitala?
+2. Katere industrije so najpogosteje financirane s strani vlagateljev tveganega kapitala?
+3. So te industrije priljubljene zaradi potencialnih donosov ali zaradi drugih dejavnikov?
+4. Kako se računalniški sektor primerja po kapitalizaciji in odstotkih pridobitev?
 
-Podatki in Vprašanja
-Podatkovna zbirka vključuje naslednje industrije s pripadajočimi meritvami:
+---
 
-Curated Web
-  - Povprečno financiranje: 1526 tisoč USD
-  - Povprečno število krogov financiranja: 1.63
-  - Odstotek pridobitev: 11.47%
+## Povzetek Podatkov
 
-POVPREČJE VSEH TRGOV
-  - Povprečno financiranje: 60 tisoč USD
-  - Povprečno število krogov financiranja: 0.07
-  - Odstotek pridobitev: 0.32%
+Podatkovna zbirka vključuje deset industrij, vsako z glavnimi meritvami, ki pomagajo pri odločanju o naložbah:
 
-Software
-  - Povprečno financiranje: 1692 tisoč USD
-  - Povprečno število krogov financiranja: 1.71
-  - Odstotek pridobitev: 10.80%
+- **Povprečno Financiranje**: Povprečni znesek naložbe v vsako industrijo.
+- **Povprečno Število Krogov Financiranja**: Tipično število krogov financiranja, skozi katere grejo podjetja v posameznih industrijah.
+- **Odstotek Pridobitev**: Odstotek podjetij, ki so pridobljena, kar kaže na verjetnost dobičkonosnega izhoda.
 
-Mobile
-  - Povprečno financiranje: 1528 tisoč USD
-  - Povprečno število krogov financiranja: 1.86
-  - Odstotek pridobitev: 10.24%
+### Pregled po Industrijah
+- **Curated Web**
+  - Financiranje: 1.526 tisoč USD | Krogi: 1,63 | Pridobitve: 11,47 %
+  
+- **Software**
+  - Financiranje: 1.692 tisoč USD | Krogi: 1,71 | Pridobitve: 10,80 %
+  
+- **Mobile**
+  - Financiranje: 1.528 tisoč USD | Krogi: 1,86 | Pridobitve: 10,24 %
+  
+- **Enterprise Software**
+  - Financiranje: 1.791 tisoč USD | Krogi: 2,06 | Pridobitve: 16,52 %
+  
+- **Semiconductors**
+  - Financiranje: 1.582 tisoč USD | Krogi: 2,25 | Pridobitve: 18,34 %
+  
+- **Web Hosting**
+  - Financiranje: 1.712 tisoč USD | Krogi: 1,83 | Pridobitve: 19,80 %
+  
+- **Video**
+  - Financiranje: 1.577 tisoč USD | Krogi: 2,08 | Pridobitve: 14,45 %  
 
-Enterprise Software
-  - Povprečno financiranje: 1791 tisoč USD
-  - Povprečno število krogov financiranja: 2.06
-  - Odstotek pridobitev: 16.52%
+- **Public Relations**
+  - Financiranje: 1.682 tisoč USD | Krogi: 1,40 | Pridobitve: 17,46 %
+  
+- **Wireless**
+  - Financiranje: 913 tisoč USD | Krogi: 2,60 | Pridobitve: 22,58 %
 
-Semiconductors
-  - Povprečno financiranje: 1582 tisoč USD
-  - Povprečno število krogov financiranja: 2.25
-  - Odstotek pridobitev: 18.34%
+---
 
-Web Hosting
-  - Povprečno financiranje: 1712 tisoč USD
-  - Povprečno število krogov financiranja: 1.83
-  - Odstotek pridobitev: 19.80%
+## Zaključki Vizualizacije
 
-Video
-  - Povprečno financiranje: 1577 tisoč USD
-  - Povprečno število krogov financiranja: 2.08
-  - Odstotek pridobitev: 14.45%
+1. **Industrije, ki se splačajo za naložbe tveganega kapitala**
+   - Wireless ima najvišji odstotek pridobitev (22,58 %), kar kaže na močan potencial za donosne izhode.
+   - Web Hosting in Semiconductors izstopata z visokimi odstotki pridobitev (19,80 % in 18,34 %).
+   - Enterprise Software in Public Relations imata visoko povprečno financiranje in odstotke pridobitev, kar ju naredi privlačna za vlaganje.
 
-Public Relations
-  - Povprečno financiranje: 1682 tisoč USD
-  - Povprečno število krogov financiranja: 1.40
-  - Odstotek pridobitev: 17.46%
+2. **Najbolj priljubljene industrije**
+   - Wireless ima največje povprečno število krogov financiranja (2,60), kar nakazuje visoko zanimanje vlagateljev.
+   - Semiconductors, Video, in Enterprise Software prav tako beležijo večje število krogov financiranja, kar kaže na priljubljenost.
+   - Software in Mobile ohranjata priljubljenost z visokimi sredstvi in odstotki pridobitev.
 
-Wireless
-  - Povprečno financiranje: 913 tisoč USD
-  - Povprečno število krogov financiranja: 2.60
-  - Odstotek pridobitev: 22.58%
+3. **Razlogi za priljubljenost**
+   - Industrije z visokimi odstotki pridobitev, kot so Wireless, Web Hosting in Semiconductors, so priljubljene predvsem zaradi donosnosti.
+   - Industriji Mobile in Curated Web sta lahko privlačni tudi zaradi novih tehnologij in trendov.
 
-Odgovori prek Vizualizacije
-1. V katerih industrijah se splača vlagati tvegan kapital?
+4. **Kapitalizacija računalniške industrije**
+   - Industrija Software, kot osrednji del računalništva, ima povprečno financiranje 1.692 tisoč USD in odstotek pridobitev 10,80 %, kar kaže na pomembno kapitalizacijo.
 
-   - Wireless ima najvišji odstotek pridobitev (22.58 %), kar kaže na potencialno donosne izhode.
-   - Web Hosting in Semiconductors prav tako izstopata z visokimi odstotki pridobitev (19.80 % in 18.34 %).
-   - Industriji Enterprise Software in Public Relations sta privlačni za vlaganje zaradi visokega povprečnega financiranja in odstotka pridobitev.
+---
 
-2. Katere industrije so najbolj priljubljene?
+## Dodatni Vpogledi
+- **Strategija naložb**: Osredotočanje na industrije z visokimi odstotki pridobitev lahko poveča verjetnost donosnih izhodov.
+- **Trendi na trgu**: Spremljanje nastajajočih industrij z večjim številom krogov financiranja omogoča prepoznavanje novih naložbenih priložnosti.
+- **Ocena tveganja**: Industrije z nižjim povprečnim financiranjem in pridobitvami lahko predstavljajo večje tveganje, a hkrati ponujajo unikatne možnosti.
 
-   - Wireless ima najvišje povprečno število krogov financiranja (2.60), kar kaže na visoko zanimanje vlagateljev.
-   - Semiconductors, Video in Enterprise Software imajo prav tako več krogov financiranja, kar kaže na priljubljenost.
-   - Software in Mobile ohranjata priljubljenost s pomembnimi sredstvi in odstotki pridobitev.
+---
 
-3. Ali so priljubljene, ker prinašajo dobiček ali ker so zanimive?
+## Vir Podatkov
+Podatki v tej vizualizaciji so iz evidenc o naložbah tveganega kapitala in analizirajo vzorce financiranja v različnih industrijah.
 
-   - Visoki odstotki pridobitev v industrijah, kot so Wireless, Web Hosting in Semiconductors, kažejo, da je priljubljenost tesno povezana z donosnostjo.
-   - Industriji Mobile in Curated Web sta priljubljeni zaradi novih tehnologij in trendov, kar kaže na mešanico donosnosti in zanimanja
+## Navodila za Ogled Vizualizacije
+Za interaktivno vizualizacijo zaženite datoteko `sketch_241011e.js` v JavaScript okolju ali p5.js urejevalniku.
