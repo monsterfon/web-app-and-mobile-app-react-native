@@ -170,6 +170,7 @@ function displayHoveredCount(x, y) {
 function draw() {
     if (needsRedraw) {
         displayCategoryList();
+        drawLeaderboard(); // Draw the leaderboard below the histogram
         needsRedraw = false;
     }
 
@@ -182,6 +183,20 @@ function draw() {
     // Display the hovered category name and count
     if (hoveredCategory) {
         displayHoveredCount(mouseX, mouseY);
+    }
+}
+
+function drawLeaderboard() {
+    let startY = height - 400; // Starting Y position for the leaderboard
+    let startX = 100; // Starting X position for the leaderboard
+    let lineHeight = 25; // Height of each line in the leaderboard
+
+    fill(0); // Set text color to white
+    textSize(18); // Set text size
+
+    for (let i = 0; i < leaderboard.length; i++) {
+        let entry = leaderboard[i];
+        text(`${i + 1}. ${entry.name}: ${entry.score}`, startX, startY + i * lineHeight);
     }
 }
 
