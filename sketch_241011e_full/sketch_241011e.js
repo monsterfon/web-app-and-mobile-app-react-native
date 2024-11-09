@@ -11,6 +11,10 @@ let result = [];
 
 let leaderboard = []; // Array to store the leaderboard data
 
+//overflow scroll
+//naslov big investicije tvegaega kapitala
+//dat da je na istem napisano
+
 function preload() {
     // Load the CSV file
     lines = loadStrings('data/investments_VC.csv');
@@ -20,8 +24,8 @@ let columnSlider;
 let myButton;
 
 function setup() {
-    // Create a canvas for display
-    createCanvas(1920, 1080);
+    let canvas = createCanvas(1920, 1080);
+    canvas.parent('canvas-container'); // Attach canvas to the div
     
     // Create a slider for the number of columns
     columnSlider = createSlider(1, 160, 10); // Min: 1, Max: 20, Initial: 10
@@ -30,6 +34,7 @@ function setup() {
     // Add an event listener to the slider
     columnSlider.input(() => needsRedraw = true);
 
+
     // Create a button
     myButton = createButton('Reset  Leaderboard');
     myButton.position(10, 50); // Position the button below the slider
@@ -37,11 +42,13 @@ function setup() {
 
     extractCategoryListSUPREME();
     displayCategoryList();
+    createLeaderboardTable(); 
 }
 
 function buttonClicked() {
     console.log('Button was clicked!');
     leaderboard = [];
+    updateLeaderboardTable(); // Update the leaderboard table
 }
 
 function extractCategoryListSUPREME() {
@@ -135,6 +142,7 @@ function displayCategoryList() {
 
         // Draw the bar
         fill(128, 128, 128); // Grey color
+        
         rect(i * barWidth, y - barHeight, barWidth - 2, barHeight); // Draw the bar
 
         // Optional: Add category names above the bars
@@ -170,7 +178,6 @@ function displayHoveredCount(x, y) {
 function draw() {
     if (needsRedraw) {
         displayCategoryList();
-        drawLeaderboard(); // Draw the leaderboard below the histogram
         needsRedraw = false;
     }
 
@@ -186,18 +193,48 @@ function draw() {
     }
 }
 
-function drawLeaderboard() {
-    let startY = height - 400; // Starting Y position for the leaderboard
-    let startX = 100; // Starting X position for the leaderboard
-    let lineHeight = 25; // Height of each line in the leaderboard
+function createLeaderboardTable() {
+    const container = document.getElementById("table-container");
+    container.innerHTML = ''; // Clear existing content
 
-    fill(0); // Set text color to white
-    textSize(18); // Set text size
+    const table = document.createElement("table");
+    table.style.width = "100%";
+    table.style.borderCollapse = "collapse";
 
-    for (let i = 0; i < leaderboard.length; i++) {
-        let entry = leaderboard[i];
-        text(`${i + 1}. ${entry.name}: ${entry.score}`, startX, startY + i * lineHeight);
-    }
+    const headerRow = document.createElement("tr");
+    const headers = ["Market Name", "Funding Avg USD", "Funding Rounds", "Acquired Count %"];
+    headers.forEach(header => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.style.border = "1px solid black";
+        th.style.padding = "8px";
+        th.style.textAlign = "left";
+        headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    container.appendChild(table);
+}
+
+function updateLeaderboardTable() {
+    const container = document.getElementById("table-container");
+    const table = container.querySelector("table");
+
+    // Clear existing rows except the header
+    table.querySelectorAll("tr:not(:first-child)").forEach(row => row.remove());
+
+    // Add new rows from the leaderboard array
+    leaderboard.forEach(entry => {
+        const row = document.createElement("tr");
+        Object.values(entry).forEach(value => {
+            const td = document.createElement("td");
+            td.textContent = value;
+            td.style.border = "1px solid black";
+            td.style.padding = "8px";
+            row.appendChild(td);
+        });
+        table.appendChild(row);
+    });
 }
 
 function mouseMoved() {
@@ -243,6 +280,7 @@ function mousePressed() {
             };
             leaderboard.push(formattedData);
             needsRedraw = true; // Redraw to update the leaderboard
+            updateLeaderboardTable(); // Update the leaderboard table
             console.log(leaderboard);
         }
     }
