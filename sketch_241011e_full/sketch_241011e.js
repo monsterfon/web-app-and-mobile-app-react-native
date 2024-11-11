@@ -8,12 +8,11 @@ let hoveredCategory = '';
 let hoveredCount = 0;
 let needsRedraw = true; // Flag to indicate if the canvas needs to be redrawn
 let result = [];
-
 let leaderboard = []; // Array to store the leaderboard data
 
 //overflow scroll
 //naslov big investicije tvegaega kapitala
-//dat da je na istem napisano
+
 
 function preload() {
     // Load the CSV file
@@ -27,8 +26,11 @@ function setup() {
     let canvas = createCanvas(1920, 1080);
     canvas.parent('canvas-container'); // Attach canvas to the div
     
+ 
+    
+    
     // Create a slider for the number of columns
-    columnSlider = createSlider(1, 160, 10); // Min: 1, Max: 20, Initial: 10
+    columnSlider = createSlider(2, 100, 10); // Min: 1, Max: 20, Initial: 10
     columnSlider.position(10, 10); // Position the slider
 
     // Add an event listener to the slider
@@ -36,9 +38,42 @@ function setup() {
 
 
     // Create a button
-    myButton = createButton('Reset  Leaderboard');
+    myButton = createButton('Ponastavi lestvico');
     myButton.position(10, 50); // Position the button below the slider
-    myButton.mousePressed(buttonClicked); // Attach event listener
+    myButton.mousePressed(() => {
+        leaderboard.pop(); // Remove the last element from the leaderboard
+        buttonClicked(); // Call the buttonClicked function
+        leaderboard.pop(); // Remove the last element from the leaderboard
+    });
+
+    let sortButton = createButton('Sortiraj lestvico po % prevzetih');
+    sortButton.position(10, 90);
+    sortButton.mousePressed(() => {
+        leaderboard.pop();
+        leaderboard.sort((a, b) => parseFloat(b.acquired_count_percent) - parseFloat(a.acquired_count_percent));
+        updateLeaderboardTable();
+        
+    });
+
+    // SORT BY MONEY
+    let sortButtonMoney = createButton('Sortiraj lestvico po sredstvih');
+    sortButtonMoney.position(10, 130);
+    sortButtonMoney.mousePressed(() => {
+        leaderboard.pop();
+        leaderboard.sort((a, b) => parseFloat(b.funding_avg_usd) - parseFloat(a.funding_avg_usd));
+        updateLeaderboardTable();
+    });
+
+    // SORT BY FINANCING CIRCLES
+    let sortButtonFinance = createButton('Sortiraj lestvico po krogih financiranja');
+    sortButtonFinance.position(10, 170);
+    sortButtonFinance.mousePressed(() => {
+        leaderboard.pop();
+        leaderboard.sort((a, b) => parseFloat(b.funding_rounds) - parseFloat(a.funding_rounds));
+        updateLeaderboardTable();
+    });
+
+
 
     extractCategoryListSUPREME();
     displayCategoryList();
@@ -115,7 +150,7 @@ function extractCategoryListSUPREME() {
     }
 
     result[2] = {
-        market_name: 'THE AVERAGE OF ALL MARKETS',
+        market_name: 'POVPREČJE VSEH TRGOV',
         market_count: totalMarkets,
         funding_total_usd: avgFundingTotalUSD,
         funding_rounds: avgFundingRounds,
@@ -148,7 +183,9 @@ function displayCategoryList() {
         // Optional: Add category names above the bars
         fill(0); // Set text color to black
         textAlign(CENTER);
-        text("", i * barWidth + barWidth / 2, y + 15); // Display category names
+
+            textSize(13); // Set smaller text size
+            text(i + 1, i * barWidth + barWidth / 2, y + 15); // Display category names
     }
 
     // If a category has been selected, display its count
@@ -161,16 +198,16 @@ function displayHoveredCount(x, y) {
     fill(0); // Set text color to black
     textSize(16);
     textAlign(LEFT);
-    text(`Hovered Category: ${hoveredCategory} | Count: ${hoveredCount}`, x + 10, y - 10);
+    text(`Preletena kategorija: ${hoveredCategory} | Število: ${hoveredCount}`, x + 10, y - 10);
 
     // Display additional information if a category is hovered
     if (hoveredCategory) {
         const hoveredData = result.find(d => d.market_name === hoveredCategory);
         if (hoveredData) {
             const { funding_total_usd, funding_rounds, status_count_acquired, market_count } = hoveredData;
-            text(`Funding avg. USD: ${(Math.round(funding_total_usd / market_count / 1e6))}M`, x + 10, y + 10);
-            text(`Funding Rounds: ${(funding_rounds / market_count).toFixed(1)}`, x + 10, y + 30);
-            text(`Acquired Count %: ${((status_count_acquired / market_count) * 100).toFixed(1)}`, x + 10, y + 50);
+            text(`Povprečna sredstva USD: ${(Math.round(funding_total_usd / market_count / 1e6))}M`, x + 10, y + 10);
+            text(`Krogi financiranja: ${(funding_rounds / market_count).toFixed(1)}`, x + 10, y + 30);
+            text(`Število prevzetih %: ${((status_count_acquired / market_count) * 100).toFixed(1)}`, x + 10, y + 50);
         }
     }
 }
@@ -185,7 +222,25 @@ function draw() {
     fill(0);
     textSize(16);
     textAlign(LEFT);
-    text(`Number of Columns: ${columnSlider.value()}`, columnSlider.x * 2 + columnSlider.width, 25);
+    text(`Število stolpcev: ${columnSlider.value()}`, columnSlider.x * 2 + columnSlider.width, 25);
+    
+    // Center the text
+    textAlign(CENTER, CENTER);
+
+    // Main title styling
+    textSize(60);
+    textStyle(BOLD);
+    fill(0);
+    text(`Kategorije naložb tveganega kapitala`, width / 2, 80);
+
+    // Subtitle styling
+    textSize(40);
+    textStyle(NORMAL);
+    fill(50);
+    text(`Razvrščeno po številu podjetij v vsaki tržni kategoriji`, width / 2, 140);
+
+    
+
 
     // Display the hovered category name and count
     if (hoveredCategory) {
@@ -202,7 +257,7 @@ function createLeaderboardTable() {
     table.style.borderCollapse = "collapse";
 
     const headerRow = document.createElement("tr");
-    const headers = ["Market Name", "Funding Avg USD", "Funding Rounds", "Acquired Count %"];
+    const headers = ["Ime trga", "Povprečna sredstva USD", "Krogi financiranja", "Število prevzetih %"];
     headers.forEach(header => {
         const th = document.createElement("th");
         th.textContent = header;
@@ -274,14 +329,19 @@ function mousePressed() {
             const { funding_total_usd, funding_rounds, status_count_acquired, market_count } = hoveredData;
             const formattedData = {
                 market_name: hoveredCategory,
-                funding_avg_usd: `${(Math.round(funding_total_usd / market_count / 1e3))}  thousand USD`,
+                funding_avg_usd: `${(Math.round(funding_total_usd / market_count / 1e3))} tisoč USD`,
                 funding_rounds: (funding_rounds / market_count).toFixed(2),
                 acquired_count_percent: ((status_count_acquired / market_count) * 100).toFixed(2)
             };
-            leaderboard.push(formattedData);
-            needsRedraw = true; // Redraw to update the leaderboard
-            updateLeaderboardTable(); // Update the leaderboard table
-            console.log(leaderboard);
+
+            // Check if the category already exists in the leaderboard
+            const exists = leaderboard.some(entry => entry.market_name === hoveredCategory);
+            if (!exists) {
+                leaderboard.push(formattedData);
+                needsRedraw = true; // Redraw to update the leaderboard
+                updateLeaderboardTable(); // Update the leaderboard table
+                console.log(leaderboard);
+            }
         }
     }
 }
