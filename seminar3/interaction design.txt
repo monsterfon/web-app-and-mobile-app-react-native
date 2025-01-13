@@ -1,0 +1,300 @@
+Welcome to Interaction Design: Beyond Human-Computer Interaction, and our interactive
+website at ID-Book.com
+This textbook is for undergraduate and masters students from a range of backgrounds
+studying classes in human-computer interaction, interaction design, web
+design, etc. A broad range of professionals and technology users will also find this
+book useful, and so will graduate students who are moving into this area from related
+disciplines.
+Our book is called Interaction Design: Beyond Human-Computer Interaction
+because it is concerned with a broader scope of issues, topics, and paradigms than
+has traditionally been the scope of human-computer interaction (HCI). This reflects
+the exciting times we are living in, when there has never been a greater need for interaction
+designers and usability engineers to develop current and next-generation
+interactive technologies. To be successful they will need a mixed set of skills from
+psychology, human-computer interaction, web design, computer science, information
+systems, marketing, entertainment, and business.
+What exactly do we mean by interaction design? In essence, we define interaction
+design as:
+"designing interactive products to support people in their everyday and working lives".
+This entails creating user experiences that enhance and extend the way people
+work, communicate, and interact. Now that it is widely accepted that HCI has
+moved beyond designing computer systems for one user sitting in front of one machine
+to embrace new paradigms, we, likewise, have covered a wider range of issues.
+These include ubiquitous computing and pervasive computing that make use
+of wireless and collaborative technologies. We also have tried to make the book
+up-to-date with many examples from contemporary research.
+The book has 15 chapters and includes discussion of how cognitive, social, and
+affective issues apply to interaction design. A central theme is that design and evaluation
+are interleaving, highly iterative processes, with some roots in theory but
+which rely strongly on good practice to create usable products. The book has a
+'hands-on' orientation and explains how to carry out a variety of techniques. It also
+has a strong pedagogical design and includes many activities (with detailed comments),
+assignments, and the special pedagogic features discussed below.
+The style of writing is intended to be accessible to students, as well as professionals
+and general readers, so it is conversational and includes anecdotes, cartoons,
+and case studies. Many of the examples are intended to relate to readers'
+own experiences. The book and the associated website encourage readers to be active
+when reading and to think about seminal issues. For example, one feature we
+have included in the book is the "dilemma," where a controversial topic is aired.
+The aim is for readers to understand that much of interaction design needs considvi
+Preface
+eration of the issues, and that they need to learn to weigh-up the pros and cons and
+be prepared to make trade-offs. We particularly want readers to realize that there
+is rarely a right or wrong answer although there are good designs and poor designs.
+This book is accompanied by a website, which provides a variety of resources
+and interactivities, The website offers a place where readers can learn how to design
+websites and other kinds of multimedia interfaces. Rather than just provide a list of
+guidelines and design principles, we have developed various interactivities, including
+online tutorials and step-by-step exercises, intended to support learning by
+doing.
+Special features
+We use both the textbook and the web to teach about interaction design. To promote
+good pedagogical practice we include the following features:
+Chapter design
+Each chapter is designed to motivate and support learning:
+Aims are provided so that readers develop an accurate model of what to expect
+in the chapter.
+Key points at the end of the chapter summarize what is important.
+Activities are included throughout the book and are considered an essential
+ingredient for learning. They encourage readers to extend and apply their
+knowledge. Comments are offered directly after the activities, because pedagogic
+research suggests that turning to the back of the text annoys readers
+and discourages learning.
+An assignment is provided at the end of each chapter. This can be set as a
+group or individual project. The aim is for students to put into practice and
+consolidate knowledge and skills either from the chapter that they have just
+studied or from several chapters. Some of the assignments build on each
+other and involve developing and evaluating designs or actual products.
+Hints and guidance are provided on the website.
+Boxes provide additional and highlighted information for readers to reflect
+upon in more depth.
+Dilemmas offer honest and thought-provoking coverage of controversial or
+problematic issues.
+Further reading suggestions are provided at the end of each chapter. These
+refer to seminal work in the field, interesting additional material, or work
+that has been heavily drawn upon in the text.
+Interviews with nine practitioners and visionaries in the field enable readers
+to gain a personal perspective of the interviewees' work, their philosophies,
+their ideas about what is important, and their contributions to the field.
+Cartoons are included to make the book enjoyable.
+How to use this book vii
+ID-Book.com website
+The aim of the website is to provide you with an opportunity to learn about interaction
+design in ways that go "beyond the book." Additional in-depth material,
+hands-on interactivities, a student's corner and informal tutorials will be provided.
+Specific features planned include:
+Hands-on interactivities, including designing a questionnaire, customizing a
+set of heuristics, doing a usability analysis on 'real' data, and interactive tools
+to support physical design.
+Recent case studies.
+Student's corner where you will be able to send in your designs, thoughts,
+written articles which, if suitable, will be posted on the site at specified times
+during the year.
+Hints and guidance on the assignments outlined in the book.
+Suggestions for additional material to be used in seminars, lab classes, and
+lectures.
+Key terms and concepts (with links to where to find out more about them).
+Readership
+This book will be useful to a wide range of readers with different needs and
+aspirations.
+Students from Computer Science, Software Engineering, Information Systems,
+Psychology, Sociology, and related disciplines studying courses in Interaction Design
+and Human-Computer Interaction will learn the knowledge, skills, and techniques
+for designing and evaluating state-of-the-art products, and websites, as well
+as traditional computer systems.
+Web and Interaction Designers, and Usability Professionals will find plenty to
+satisfy their need for immediate answers to problems as well as for building skills to
+satisfy the demands of today's fast moving technical market.
+Users, who want to understand why certain products can be used with ease
+while others are unpredictable and frustrating, will take pleasure in discovering
+that there is a discipline with practices that produce usable systems.
+Researchers and developers who are interested in exploiting the potential of the
+web, wireless, and collaborative technologies will find that, as well as offering guidance,
+techniques, and much food for thought, a special effort has been made to include
+examples of state-of-the-art systems.
+In the next section we recommend various routes through the text for different
+kinds of readers.
+How to use this book
+Interaction Design is not a linear design process but is essentially iterative and
+some readers and experienced instructors will want tb find their own way through
+the chapters. Others, and particularly those with less experience, may prefer to
+viii Preface
+work through chapter by chapter. Readers will also have different needs. For example,
+students in Psychology will come with different background knowledge and
+needs from those in Computer Science. Similarly, professionals wanting to learn
+the fundamentals in a one-week course have different needs. This book and the
+website are designed for using in various ways. The following suggestions are provided
+to help you decide which way is best for you.
+From beginning to end
+There are fifteen chapters so students can study one chapter per week during a
+fifteen-week semester course. Chapter 15 contains design and evaluation case studies.
+Our intention is that these case studies help to draw together the contents of the
+rest of the book by showing how design and evaluation are done in the real world.
+However, some readers may prefer to dip into them along the way.
+Getting a quick overview
+For those who want to get a quick overview or just the essence of the book, we
+suggest you read Chapters 1, 6, and 10. These chapters are recommended for
+everyone.
+Suggestions for computer science students
+In addition to reading Chapters 1,6, and 10, Chapters 7 and 8 contain the material
+that will feel most familiar to any students who have been introduced to software
+development. These chapters cover the process of interaction design and the activities
+it involves, including establishing requirements, conceptual design, and physical
+design. The book itself does not include any coding exercises, but the website
+will provide tools and widgets with which to interact.
+For those following the ACM-IEEE Curriculum (2001)*, you will find that this
+text and website cover most of this curriculum. The topics listed under each of the
+following headings are discussed in the chapters shown:
+HC1 Foundations of Human-Computer Interaction (Chapters 1-5, 14,
+website).
+HC2 Building a simple graphical user interface (Chapters 1,6,8,10 and the
+website).
+HC3 Human-Centered Software Evaluation (Chapters 1,10-15, website).
+HC4 Human-Centered Software Design (Chapters 1,6-9,15).
+HC5 Graphical User-Interface Design (Chapters 2 and 8 and the website.
+Many relevant examples are discussed in Chapters 1-5 integrated with discussion
+of cognitive and social issues).
+*ACM-IEEE Curriculum (2001) [computer.org/education/cc2001/] is under development at the time of
+writing this book.
+How to use this book ix
+HC6 Graphical User-Interface Programming (touched upon only in Chapters
+7-9 and on the website).
+HC7 HCI Aspects of Multimedia Information Systems and the web (integrated
+into the discussion of Chapters 1-5, and in examples throughout the
+text, and on the website).
+HC8 HCI Aspects of Group Collaboration and Communication Technology
+(discussed in 1-5, particularly in Chapter 4. Chapters 6-15 discuss design and
+evaluation and some examples cover these systems, as does the website.)
+Suggestions for information systems students
+Information systems students will benefit from reading the whole text, but instructors
+may want to find additional examples of their own to illustrate how issues apply to
+business applications. Some students may be tempted to skip Chapters 3-5 but we recommend
+that they should read these chapters since they provide important foundational
+material. This book does not cover how to develop business cases or marketing.
+Suggestions for psychology and cognitive science students
+Chapters 3-5 cover how theory and research findings have been applied to interaction
+design. They discuss the relevant issues and provide a wide range of studies
+and systems that have been informed by cognitive, social, and affective issues.
+Chapters 1 and 2 also cover important conceptual knowledge, necessary for having
+a good grounding in interaction design.
+Practitioner and short course route
+Many people want the equivalent of a short intensive 2-5 day course. The best
+route for them is to read Chapters 1,6,10 and 11 and dip into the rest of the book
+for reference. For those who want practical skills, we recommend Chapter 8.
+Plan your own path
+For people who do not want to follow the "beginning-to-end" approach or the suggestions
+above, there are many ways to use the text. Chapters 1,6,10 and 11 provide
+a good overview of the topic. Chapter 1 is an introduction to key issues in the discipline
+and Chapters 6 and 10 offer introductions to design and evaluation. Then go
+to Chapters 2-5 for user issues, then on to the other design chapters, 2-9, dipping
+into the evaluation chapters 10-14 and the case studies in 15. Another approach is to
+start with one or two of the evaluation chapters after first reading Chapters 1, 6, 10
+and 11, then move into the design section, drawing on Chapters 2-5 as necessary.
+Web designer route
+Web designers who have a background in technology and want to learn how to design
+usable and effective websites are advised to read Chapters 1, 7, 8, 13 and 14.
+x Preface
+These chapters cover key issues that are important when designing and evaluating
+the usability of websites. A worked assignment runs through these chapters.
+Usability professionals' route
+Usability professionals who want to extend their knowledge of evaluation techniques
+and read about the social and psychological issues that underpin design of the web,
+wireless, and collaborative systems are advised to read Chapter 1 for an overview,
+then select from Chapters 10-14 on usability testing. Chapters 3,4, and 5 provide discussion
+of seminal user issues (cognitive, social, and affective aspects). There is new
+material throughout the rest of the book, which will also be of interest for dipping
+into as needed. This group may also be particularly interested in Chapter 8 which, together
+with material on the book website, provides practical design examples.
+Acknowledgements
+Many people have helped to make this book a reality. We have benefited from the
+advice and support of our many professional colleagues across the world, our students,
+friends, and families and we thank you all. We also warmly thank the following
+people for reviewing the manuscript and making many helpful suggestions for improvements:
+Liam Bannon, Sara Bly, Penny Collings, Paul Dourish, Jean Gasen,
+Peter Gregor, Stella Mills, Rory O'Connor, Scott Toolson, Terry Winograd, Richard
+Furuta, Robert J.K. Jacob, Blair Nonnecke, William Buxton, Carol Traynor, Blaise
+Liffich, Jan Scott, Sten Hendrickson, Ping Zhang, Lyndsay Marshall, Gary Perlman,
+Andrew Dillon, Michael Harrison, Mark Crenshaw, Laurie Dingers, David Carr,
+Steve Howard, David Squires, George Weir, Marilyn Tremaine, Bob Fields, Frances
+Slack, Ian Graham, Alan O'Callaghan, Sylvia Wilbur, and several anonymous reviewers.
+We also thank Geraldine Fitzpatrick, Tim and Dirk from DSTC (Australia)
+for their feedback on Chapters 1 and 4, Mike Scaife, Harry Brignull, Matt Davies,
+the HCCS Masters students at Sussex University (2000-2001), Stephanie Wilson
+and the students from the School of Informatics at City University and Information
+Systems Department at UMBC for their comments.
+We are particularly grateful to Sara Bly, Karen Holtzblatt, Jakob Nielsen, Abigail
+Sellen, Suzanne Robertson, Gitta Salomon, Ben Shneiderman, Gillian Crampton
+Smith, and Terry Winograd for generously contributing in-depth interviews.
+Lili Cheng and her colleagues allowed us to use the Hutchworld case study.
+Bill Killam provided the TRZS case study. Keith Cogdill supplied the MEDLZNEplus
+case study. We thank Lili, Bill, and Keith for supplying the basic reports and
+commenting on various drafts. Jon Lazar and Dorine Andrews contributed material
+for the section on questionnaires, which we thank them for.
+We are grateful to our Editors Paul Crockett and Gaynor Redvers-Mutton and
+the production team at Wiley: Maddy Lesure, Susannah Barr, Anna Melhorn,
+Gemma Quilter, and Ken Santor. Without their help and skill this book would not
+have been produced. Bill Zobrist and Simon Plumtree played a significant role in
+persuading us to work with Wiley and we thank them too.
+About the authors xi
+I About the authors
+The authors are all senior academics with a background in teaching, researching,
+and consulting in the UK, USA, Canada, Australia, and Europe. Having worked
+together on two other successful text books, they bring considerable experience in
+curriculum development, using a variety of media for distance learning as well as
+face-to-face teaching. They have considerable knowledge of creating learning texts
+and websites that motivate and support learning for a range of students.
+All three authors are specialists in interaction design and human-computer interaction
+(HCI). In addition they bring skills from other discipline~. Yvonne
+Rogers is a cognitive scientist, Helen Sharp is a software engineer, and Jenny
+Preece works in information systems. Their complementary knowledge and skills
+enable them to cover the breadth of concepts in interaction design and HCI to produce
+an interdisciplinary text and website. They have collaborated closely, supporting
+and commenting upon each other's work to produce a high degree of
+integration of ideas with one voice. They have shared everything from initial concepts,
+through writing, design and production.
+
+Con tents
+Chapter 1 What is interaction design? 1
+1 .I Introduction 1
+1.2 Good and poor design 2
+1.2.1 What to design 4
+1.3 What is interaction design? 6
+1.3.1 The makeup of interaction design 6
+1.3.2 Working together as a multidisciplinary team 9
+1.3.3 Interaction design in business 10
+1.4 What is involved in the process of interaction design? 12
+1.5 The goals of interaction design 13
+1.5.1 Usability goals 1 A
+1.5.2 User experience goals 18
+1.6 More on usability: design and usability principles 20
+1.6.1 Heuristics and usability principles 26
+Interview with Gitta Salomon 3 1
+Chapter 2 Understanding and concep~alizingin teraction 35
+2.1 lntroduction 35
+2.2 Understanding the problem space 36
+2.3 Conceptual models 39
+2.3.1 Conceptual models based on activities 41
+2.3.2 Conceptual models based on objects 51
+2.3.3 A case of mix and match? 54
+2.4 Interface metaphors 55
+2.5 Interaction paradigms 60
+2.6 From conceptual models to physical design 64
+Interview with Terry Winograd 70
+Chapter 3 Understanding users 73
+3.1 Introduction 73
+3.2 What is cognition? 74
+3.3 Applying knowledge from the physical world to the digital world 90
+3.4 Conceptual frameworks for cognition 92
+3.4.1 Mental models 92
+xiv Contents
+3.4.2 Information processing 96
+3.4.3 External cognition 98
+3.5 Informing design: from theory to practice 101
+Chapter 4 Designing for collaboration and communica~ion 105
+4.1 Introduction 105
+4.2 Social mechanisms used in communication and collaboration 106
+4.2.1 Conversational mechanisms 107
+4.2.2 Designing collaborative technologies to support conversation
+110
+4.2.3 Coordination mechanisms 1 18
+4.2.4 Designing collaborative technologies to support coordination

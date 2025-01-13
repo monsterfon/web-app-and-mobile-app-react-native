@@ -1,0 +1,28 @@
+Project: Interactive Timeline Collage Java App
+Project Overview
+This Java app allows users to interactively navigate through a collage of images representing different experiences over time. Each experience is visually represented with a clickable "circle" that opens details when selected. Users can add, edit, view, and delete experiences, enhancing the interactivity and customization of the timeline.
+
+Core Features
+Add Experience:
+
+Users can input a name and description for each experience.
+A thumbnail image will represent the experience on the timeline.
+View Timeline:
+
+The app displays a chronological list of experiences.
+Users can scroll or swipe to navigate through the timeline.
+Interactive Collage Display:
+
+Show clickable circles (20 images as clickable nodes in a collage).
+Users can tap circles to see details about each experience.
+Each image contains the date information as an overlay within the image file.
+Edit Experience:
+
+Allow users to update the name, description, and image of existing experiences.
+Delete Experience:
+
+Users can remove experiences from the timeline.
+Technology Stack
+Language: Java (with Android SDK if targeting mobile)
+UI: XML layouts for AndSSroid (interactive collage and detail view), custom views for interactive elements
+Image Handling: Picasso or Glide library for efficient image loading
